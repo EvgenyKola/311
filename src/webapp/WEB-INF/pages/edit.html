@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление пользователя</title>
+  <h1>Обновление пользователя</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Возраст</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td id="id" th:text="${user.id}"></td>
+      <td><input type="text" id="name" name="name" th:value="${user.name}" /></td>
+      <td><input type="text" id="lastName" name="lastName" th:value="${user.lastName}" /></td>
+      <td><input type="text" id="age" name="age" th:value="${user.age}" /></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div id="message"><p th:text="${message}"></p></div>
+
+  <button type="button" style="padding: 5px;" onclick="editUser()">Изменить данные</button>
+
+
+  <script>
+    function editUser() {
+      const id = document.getElementById('id').innerHTML;
+      const name = document.getElementById('name').value;
+      const lastName = document.getElementById('lastName').value;
+      const age = document.getElementById('age').value;
+
+      var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+      var newUrl = baseUrl + `?id=${id}&name=${name}&lastName=${lastName}&age=${age}&update=true`;
+
+      window.location.href = newUrl;
+    }
+  </script>
+
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание пользователя</title>
+  <h1>Создание нового пользователя</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Возраст</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input type="text" id="name" name="name" /></td>
+      <td><input type="text" id="lastName" name="lastName" /></td>
+      <td><input type="text" id="age" name="age" /></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div id="message"><p th:text="${message}"></p></div>
+
+  <button type="button" style="padding: 5px;" onclick="createUser()">Создать пользователя</button>
+
+
+  <script>
+    function createUser() {
+      const name = document.getElementById('name').value;
+      const lastName = document.getElementById('lastName').value;
+      const age = document.getElementById('age').value;
+
+
+      var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+      var newUrl = baseUrl + `?name=${name}&lastName=${lastName}&age=${age}`;
+
+      window.location.href = newUrl;
+    }
+  </script>
+
+
+<body>
+
+</body>
+</html>
