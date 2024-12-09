@@ -1,33 +1,22 @@
 package web.services;
 
-import org.springframework.stereotype.Component;
-import web.user.*;
+import org.springframework.ui.ModelMap;
+import web.Model.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Component
-public class Services {
+public interface Services {
 
-    private final UserDAO userDao;
+    User getUser(Long userId);
 
-    public Services(UserDAO userDao) {
-        this.userDao = userDao;
-    }
+    List<User> getAllUsers();
 
-    public User getUser(Long userId){
-        return userDao.getUser(userId);
-    };
-    public List<User> getAllUsers(){
-        return userDao.getAllUsers();
-    };
-    public Integer deleteUser(Long userId){
-        return userDao.deleteUser(userId);
-    };
-    public void createUser(User user) {
-        userDao.createUser(user);
-    };
-    public void editUser(User user) {
-        userDao.editUser(user);
-    };
+    Integer deleteUser(Long userId);
 
+    void createUser(User user);
+
+    void editUser(User user);
+
+    String editUserService(ModelMap model, HttpServletRequest request);
 }

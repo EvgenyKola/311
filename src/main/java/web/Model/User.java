@@ -1,4 +1,4 @@
-package web.user;
+package web.Model;
 
 import javax.persistence.*;
 
